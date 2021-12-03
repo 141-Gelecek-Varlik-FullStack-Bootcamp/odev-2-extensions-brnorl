@@ -25,30 +25,28 @@ namespace ExtensionsWebApi.AddControllers
         [HttpGet]
         public IActionResult getUsers()
         {
+            //Belirli işlemi yapan classa contexti gönderip class içinde işlemler yaptırdım
             GetUsersCommand command = new GetUsersCommand(_context);
             var result = command.Handle();
             return Ok(result);
         }
 
+        //??Index and length must refer to a location within the string. (Parameter 'length') ?????
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            UsersDetailViewModel result;
-
-
+            UsersDetailViewModel result;//geri gönderilen veri modeli
             try
             {
                 GetUsersDetailCommand command = new GetUsersDetailCommand(_context);
-
-                command.UserId = id;
-                result = command.Handle();
+                command.UserId = id;//gelen id ile databasedeki modeller arasında id eşleştirmesi
+                result = command.Handle();//eşleşilen modeli geri gönderen Handle() metodu
             }
             catch (Exception ex)
             {
-
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message);// GetUsersDetailCommand classından dönen hatayı basar.
             }
-            return Ok(result);
+            return Ok(result);//200 kodu ile eşleşen veriyi döner
         }
 
         [HttpPost]
@@ -58,15 +56,15 @@ namespace ExtensionsWebApi.AddControllers
 
             try
             {
-                command.Model = newUser;
-                command.Handle();
+                command.Model = newUser;//Body'den alınan modeli komut classındaki modele eşitler
+                command.Handle();//veriyi database'e ekler --(context.SaveChanges())
             }
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message);//CreateUserCommand classından dönen hatayı basar
             }
-            return Ok();
+            return Ok();//200 kodu
         }
 
         [HttpPut("{id}")]
@@ -76,14 +74,14 @@ namespace ExtensionsWebApi.AddControllers
 
             try
             {
-                command.Model = updatedUser;
-                command.UserId = id;
-                command.Handle();
+                command.Model = updatedUser;//değiştirilen model ile class içindeki modeli eşitler
+                command.UserId = id;//id doğrulaması
+                command.Handle();//database kayıt
             }
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message);//UpdateUserCommand classından dönen hatayı basar
             }
 
             return Ok();
@@ -96,13 +94,13 @@ namespace ExtensionsWebApi.AddControllers
             try
             {
                 DeleteUserCommand command = new DeleteUserCommand(_context);
-                command.userId = id;
-                command.Handle();
+                command.userId = id;//id doğrulaması
+                command.Handle();//database'den veriyi siler ---Remove()
             }
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message);//DeleteUserCommand classından dönen hatayı basar
             }
             return Ok();
         }

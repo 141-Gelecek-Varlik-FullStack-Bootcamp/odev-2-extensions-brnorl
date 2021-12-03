@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using ExtensionsWebApi.Database;
 using ExtensionsWebApi.CustomExtensions;
@@ -22,20 +21,18 @@ namespace ExtensionsWebApi.UserOperations
             {
                 throw new InvalidOperationException("User is not exists.");
             }
-
             UsersDetailViewModel vm = new UsersDetailViewModel();
-
-            vm.shortName = user.Name + " " + user.Surname;
+            //Fullname içinde ad soyad dönmek için
+            vm.fullName = user.Name + " " + user.Surname;
+            //email ve telefon numarasının hepsini dönmek istemediğim için sansürleyecek extensionlar oluşturdum.
             vm.Email = user.Email.getProtectedEmail();
             vm.PhoneNumber = user.PhoneNumber.getProtectedPhoneNumber();
-
             return vm;
-
         }
     }
-    public class UsersDetailViewModel
+    public class UsersDetailViewModel//geri döndürdüğüm model bu şekilde:
     {
-        public string shortName { get; set; }
+        public string fullName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
     }

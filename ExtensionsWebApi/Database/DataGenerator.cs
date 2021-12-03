@@ -19,7 +19,6 @@ namespace ExtensionsWebApi.Database
                 context.Users.AddRange(
                     new User
                     {
-                        Id = 1,
                         Name = "Baransel",
                         Surname = "Oral",
                         Email = "brnorl47@gmail.com",
@@ -27,7 +26,6 @@ namespace ExtensionsWebApi.Database
                     },
                     new User
                     {
-                        Id = 2,
                         Name = "Umut",
                         Surname = "bozbek",
                         Email = "umud@gmail.com",
@@ -35,7 +33,6 @@ namespace ExtensionsWebApi.Database
                     },
                     new User
                     {
-                        Id = 3,
                         Name = "Efe",
                         Surname = "Karahanlı",
                         Email = "efe13@gmail.com",
@@ -43,7 +40,6 @@ namespace ExtensionsWebApi.Database
                     },
                     new User
                     {
-                        Id = 4,
                         Name = "Üstün",
                         Surname = "Kısa",
                         Email = "kısa123@gmail.com",
@@ -51,7 +47,6 @@ namespace ExtensionsWebApi.Database
                     },
                     new User
                     {
-                        Id = 5,
                         Name = "Fethi",
                         Surname = "Güngördü",
                         Email = "brnorl47@gmail.com",
@@ -59,7 +54,6 @@ namespace ExtensionsWebApi.Database
                     },
                     new User
                     {
-                        Id = 6,
                         Name = "Arda",
                         Surname = "Turan",
                         Email = "arda123@gmail.com",

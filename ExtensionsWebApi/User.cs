@@ -9,6 +9,7 @@ namespace ExtensionsWebApi
     public class User
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is required"), MinLength(3)]
