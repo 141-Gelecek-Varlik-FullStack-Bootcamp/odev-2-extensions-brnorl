@@ -31,8 +31,7 @@ namespace ExtensionsWebApi.AddControllers
             return Ok(result);
         }
 
-        //??Index and length must refer to a location within the string. (Parameter 'length') ?????
-        [HttpGet("{id}")]
+        [HttpGet("{id}")]//fixed...
         public IActionResult GetById(int id)
         {
             UsersDetailViewModel result;//geri gönderilen veri modeli

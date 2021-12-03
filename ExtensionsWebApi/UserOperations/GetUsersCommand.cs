@@ -22,6 +22,7 @@ namespace ExtensionsWebApi.UserOperations
             {
                 vm.Add(new UsersViewModel()
                 {
+                    //shortName için oluşturduğum extensionlar
                     shortName = user.Name.GetShortName() + user.Surname.GetShortName(),
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber
@@ -33,7 +34,7 @@ namespace ExtensionsWebApi.UserOperations
 
     }
 
-    public class UsersViewModel
+    public class UsersViewModel//Bilgiyi istediğimiz şekilde dönüyoruz
     {
         public string shortName { get; set; }
         public string Email { get; set; }

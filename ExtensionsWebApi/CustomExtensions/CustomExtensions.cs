@@ -10,7 +10,7 @@ namespace ExtensionsWebApi.CustomExtensions
 
         public static string getProtectedPhoneNumber(this string value)//numarayı sansürler(son 4 hane hariç)
         {
-            string result = "*******" + value.Substring(value.Length - 4, value.Length);
+            string result = "*******" + value.Substring(0, 4);
             return value;
         }
         public static string getProtectedEmail(this string value)//emaili sansürler (ilk 4 karakter hariç)
