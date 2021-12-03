@@ -9,6 +9,7 @@ namespace ExtensionsWebApi.Database
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
+            //context değişkenine database atılması -->
             using (var context = new UsersDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<UsersDbContext>>()))
             {
@@ -16,7 +17,7 @@ namespace ExtensionsWebApi.Database
                 {
                     return;
                 }
-                context.Users.AddRange(
+                context.Users.AddRange(//database içine Users yaratılması
                     new User
                     {
                         Name = "Baransel",
