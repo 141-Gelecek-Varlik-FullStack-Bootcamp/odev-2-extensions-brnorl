@@ -2,6 +2,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using ExtensionsWebApi.Database;
+using ExtensionsWebApi.UserOperations;
+using static ExtensionsWebApi.UserOperations.CreateUserCommand;
 //Linq dökümantasyonu
 //https://docs.microsoft.com/tr-tr/dotnet/csharp/linq/linq-in-csharp
 
@@ -12,90 +15,76 @@ namespace ExtensionsWebApi.AddControllers
 
     public class UserController : ControllerBase
     {
-        private static List<User> UserList = new List<User>()
+        private readonly UsersDbContext _context;
+
+        public UserController(UsersDbContext context)
         {
-            new User{
-                Id = 1,
-                Name = "Baransel",
-                Surname = "Oral",
-                Email = "brnorl47@gmail.com",
-                PhoneNumber = "123567893"
-            },
-            new User{
-                Id = 2,
-                Name = "Umut",
-                Surname = "bozbek",
-                Email = "umud@gmail.com",
-                PhoneNumber = "123567893"
-            },
-            new User{
-                Id = 3,
-                Name = "Efe",
-                Surname = "Karahanlı",
-                Email = "efe13@gmail.com",
-                PhoneNumber = "123567893"
-            },
-            new User{
-                Id = 4,
-                Name = "Üstün",
-                Surname = "Kısa",
-                Email = "kısa123@gmail.com",
-                PhoneNumber = "123567893"
-            },
-            new User{
-                Id = 5,
-                Name = "Fethi",
-                Surname = "Güngördü",
-                Email = "brnorl47@gmail.com",
-                PhoneNumber = "123567893"
-            },
-            new User{
-                Id = 6,
-                Name = "Arda",
-                Surname = "Turan",
-                Email = "arda123@gmail.com",
-                PhoneNumber = "123567893"
-            },
-        };
+            _context = context;
+        }
 
         [HttpGet]
-        public List<User> getUsers()
+        public IActionResult getUsers()
         {
-            var userList = UserList.OrderBy(x => x.Id).ToList<User>();//linq
-            return userList;
+            GetUsersCommand command = new GetUsersCommand(_context);
+            var result = command.Handle();
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public User GetById(int id)
+        public IActionResult GetById(int id)
         {
-            var user = UserList.Where(user => user.Id == id).SingleOrDefault();
-            return user;
+            UsersDetailViewModel result;
+
+
+            try
+            {
+                GetUsersDetailCommand command = new GetUsersDetailCommand(_context);
+
+                command.UserId = id;
+                result = command.Handle();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+            return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromBody] User newUser)
+        public IActionResult AddUser([FromBody] CreateUserModel newUser)
         {
-            var user = UserList.SingleOrDefault(x => x.Email == newUser.Email);
-            if (user is not null)
+            CreateUserCommand command = new CreateUserCommand(_context);
+
+            try
             {
-                return BadRequest();
+                command.Model = newUser;
+                command.Handle();
             }
-            UserList.Add(newUser);
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
+        public IActionResult UpdateUser(int id, [FromBody] UpdateUserModel updatedUser)
         {
-            var user = UserList.SingleOrDefault(x => x.Id == id);
-            if (user is null)
+            UpdateUserCommand command = new UpdateUserCommand(_context);
+
+            try
             {
-                return BadRequest();
+                command.Model = updatedUser;
+                command.UserId = id;
+                command.Handle();
             }
-            user.Name = updatedUser.Name != default ? updatedUser.Name : user.Name;
-            user.Surname = updatedUser.Surname != default ? updatedUser.Surname : user.Surname;
-            user.Email = updatedUser.Email != default ? updatedUser.Email : user.Email;
-            user.PhoneNumber = updatedUser.PhoneNumber != default ? updatedUser.PhoneNumber : user.PhoneNumber;
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
 
             return Ok();
         }
@@ -104,12 +93,17 @@ namespace ExtensionsWebApi.AddControllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUser(int id)
         {
-            var user = UserList.SingleOrDefault(x => x.Id == id);
-            if (user is null)
+            try
             {
-                return BadRequest();
+                DeleteUserCommand command = new DeleteUserCommand(_context);
+                command.userId = id;
+                command.Handle();
             }
-            UserList.Remove(user);
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
             return Ok();
         }
 

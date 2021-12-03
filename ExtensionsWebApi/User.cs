@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 //DataAnnotations dökümantasyon
 //https://docs.microsoft.com/tr-tr/dotnet/api/system.componentmodel.dataannotations?view=net-5.0
 
@@ -15,8 +16,8 @@ namespace ExtensionsWebApi
         [StringLength(30, ErrorMessage = "Max length is 30 chars")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Surname is required"), MinLength(2)]
-        [Display(Name = "User Surname")]
+        [Required(ErrorMessage = "Surname is required"), MinLength(2)]//Not null
+        [Display(Name = "User Surname")]//
         [StringLength(30, ErrorMessage = "Max length is 30 chars")]
         public string Surname { get; set; }
 

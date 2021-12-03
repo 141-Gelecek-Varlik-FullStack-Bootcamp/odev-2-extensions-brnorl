@@ -27,3 +27,8 @@ C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\obj\Debug\net5.0\ExtensionsWebA
 C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\obj\Debug\net5.0\ref\ExtensionsWebApi.dll
 C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\obj\Debug\net5.0\ExtensionsWebApi.pdb
 C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\obj\Debug\net5.0\ExtensionsWebApi.genruntimeconfig.cache
+C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\user\Desktop\bootcamp2\ExtensionsWebApi\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
