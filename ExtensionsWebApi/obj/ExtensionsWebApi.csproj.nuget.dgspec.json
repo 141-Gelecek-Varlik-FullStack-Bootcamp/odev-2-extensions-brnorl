@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebApi\\ExtensionsWebApi.csproj": {}
+    "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebapi\\ExtensionsWebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebApi\\ExtensionsWebApi.csproj": {
+    "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebapi\\ExtensionsWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebApi\\ExtensionsWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebapi\\ExtensionsWebApi.csproj",
         "projectName": "ExtensionsWebApi",
-        "projectPath": "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebApi\\ExtensionsWebApi.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebapi\\ExtensionsWebApi.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebApi\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\bootcamp2\\ExtensionsWebapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"

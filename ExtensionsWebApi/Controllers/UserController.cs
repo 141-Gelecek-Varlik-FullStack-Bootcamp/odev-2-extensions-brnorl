@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ExtensionsWebApi.Database;
 using ExtensionsWebApi.UserOperations;
 using static ExtensionsWebApi.UserOperations.CreateUserCommand;
+using ExtensionsWebApi.Attributes;
 //Linq dökümantasyonu
 //https://docs.microsoft.com/tr-tr/dotnet/csharp/linq/linq-in-csharp
 
@@ -22,6 +23,7 @@ namespace ExtensionsWebApi.AddControllers
             _context = context;
         }
 
+        [LoggerAttribute]//Verilen Http verb'in çalıştığı anı loglar
         [HttpGet]
         public IActionResult getUsers()
         {
